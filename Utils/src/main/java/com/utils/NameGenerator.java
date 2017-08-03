@@ -1,18 +1,9 @@
-package com.xin.base.controller.user;
+package com.utils;
+
 
 import java.util.Random;
 
-import org.junit.Test;
-
 public class NameGenerator {
-	
-	@Test
-	public void test(){
-		for(int i = 0; i < 100; i++){
-			Name name = generateName();
-			System.out.println(name.getName()+"  "+(name.getSex()==0?"女":"男"));
-		}
-	}
 	
 	public static Name generateName(){
 		Random random = new Random();

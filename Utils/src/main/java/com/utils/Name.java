@@ -1,4 +1,5 @@
-package com.xin.base.controller.user;
+package com.utils;
+
 
 public class Name {
 	private String name;
