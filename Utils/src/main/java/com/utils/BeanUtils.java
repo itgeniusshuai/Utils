@@ -11,16 +11,6 @@ import java.util.Map;
 
 public class BeanUtils {
 	
-	public static void main(String[] args) {
-		Name name = new Name("b",3);
-		Name name2 = new Name("a", null);
-		try {
-			copyProperties(name2, name);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println(name);
-	}
 	/**
 	 * 如果target属性为空不复制
 	 * @param source
