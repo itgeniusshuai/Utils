@@ -26,4 +26,8 @@ public class Name {
 	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
+	@Override
+	public String toString() {
+		return "Name [name=" + name + ", sex=" + sex + "]";
+	}
 }
