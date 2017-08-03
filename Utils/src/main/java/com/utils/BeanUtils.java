@@ -3,8 +3,11 @@ package com.utils;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BeanUtils {
 	
@@ -53,4 +56,38 @@ public class BeanUtils {
 	      }  
 	    }  
 	  }  
+	
+	/**
+	 * obj to map
+	 * @param obj
+	 * @return
+	 */
+	public static Map<String, Object> ConvertObjToMap(Object obj) {
+		Map<String, Object> reMap = new HashMap<String, Object>();
+		if (obj == null)
+			return null;
+		Field[] fields = obj.getClass().getDeclaredFields();
+		for (Field field : fields) {
+			System.out.println(field.getName());
+		}
+		try {
+			for (int i = 0; i < fields.length; i++) {
+				try {
+					Field f = obj.getClass().getDeclaredField(fields[i].getName());
+					f.setAccessible(true);
+					Object o = f.get(obj);
+					reMap.put(fields[i].getName(), o);
+				} catch (NoSuchFieldException e) {
+					e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		}
+		return reMap;
+	}
 }
