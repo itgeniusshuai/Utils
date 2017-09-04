@@ -1,5 +1,6 @@
 package com.utils;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
@@ -7,6 +8,7 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Iterator;
@@ -113,4 +115,42 @@ public class ImageUtils {
             ex.printStackTrace();
         }
     }
+    /**
+	 * 比例缩放
+	 * @param srcImageFile
+	 * @param result
+	 * @param scale 缩放比例
+	 * @param flag true为放大，false为缩小
+	 */
+    public static void scale(String srcImageFile, String result, int scale, boolean flag)  
+    {  
+        try  
+        {  
+            BufferedImage src = ImageIO.read(new File(srcImageFile)); // 读入文件  
+            int width = src.getWidth(); // 得到源图宽  
+            int height = src.getHeight(); // 得到源图长  
+            if (flag)  
+            {  
+                // 放大  
+                width = width * scale;  
+                height = height * scale;  
+            }  
+            else  
+            {  
+                // 缩小  
+                width = width / scale;  
+                height = height / scale;  
+            }  
+            Image image = src.getScaledInstance(width, height, Image.SCALE_DEFAULT);  
+            BufferedImage tag = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);  
+            Graphics g = tag.getGraphics();  
+            g.drawImage(image, 0, 0, null); // 绘制缩小后的图  
+            g.dispose();  
+            ImageIO.write(tag, "JPEG", new File(result));// 输出到文件流  
+        }  
+        catch (IOException e)  
+        {  
+            e.printStackTrace();  
+        }  
+    }  
 }
