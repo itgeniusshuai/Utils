@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Utils</groupId>
+  <artifactId>Utils</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+  	<!-- webservcie相关jar包 -->
+  	<dependency>
+		    <groupId>org.apache.axis</groupId>
+		    <artifactId>axis</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<dependency>
+		    <groupId>axis</groupId>
+		    <artifactId>axis-wsdl4j</artifactId>
+		    <version>1.5.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-discovery</groupId>
+		    <artifactId>commons-discovery</artifactId>
+		    <version>0.2</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.apache.axis</groupId>
+	        <artifactId>axis-saaj</artifactId>
+	        <version>1.4</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.axis</groupId>
+	        <artifactId>axis-jaxrpc</artifactId>
+	        <version>1.4</version>
+	    </dependency>
+	     <dependency>
+	        <groupId>javax.mail</groupId>
+	        <artifactId>mail</artifactId>
+	        <version>1.4</version>
+	    </dependency>
+	    
+	    <!-- httpclient工具类 -->
+	    <dependency>
+		    <groupId>commons-httpclient</groupId>
+		    <artifactId>commons-httpclient</artifactId>
+		    <version>3.1</version>
+		</dependency>
+		
+		<!-- json工具类 -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.24</version>
+		</dependency>
+  
+  </dependencies>
+</project>
