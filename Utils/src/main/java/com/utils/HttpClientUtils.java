@@ -9,21 +9,20 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 
 public class HttpClientUtils {
-	
-	
-	public static Object doGet(String url,Map<String, String> headers){
+
+	public static Object doGet(String url, Map<String, String> headers) {
 		HttpClient httpClient = new HttpClient();
 		GetMethod getMethod = new GetMethod(url);
-		for(String key : headers.keySet()){
+		for (String key : headers.keySet()) {
 			getMethod.addRequestHeader(key, headers.get(key));
 		}
 		try {
 			int statusCode = httpClient.executeMethod(getMethod);
-			if( statusCode != HttpStatus.SC_OK){
+			if (statusCode != HttpStatus.SC_OK) {
 				return null;
 			}
 			byte[] bs = getMethod.getResponseBody();
-			String str = new String(bs,"utf-8");
+			String str = new String(bs, "utf-8");
 			return str;
 		} catch (HttpException e) {
 			e.printStackTrace();
@@ -33,6 +32,6 @@ public class HttpClientUtils {
 			getMethod.releaseConnection();
 		}
 		return null;
-		
+
 	}
 }
