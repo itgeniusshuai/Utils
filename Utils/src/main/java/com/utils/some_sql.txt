@@ -1,0 +1,10 @@
+SELECT data_type, STUFF( column_name,1,1,lower(SUBSTRING(column_Name,1,1))) FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME='aaaaa';
+SELECT '<result property="'+STUFF( column_name,1,1,lower(SUBSTRING(column_Name,1,1)))+'" column="'+column_name+'" />' FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME='aaaaa';
+select column_name+',' from INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME='aaaaa';
+SELECT '#{'+STUFF( column_name,1,1,lower(SUBSTRING(column_Name,1,1)))+'},' FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME='aaaaa';
+SELECT  '<if test="'+STUFF( column_name,1,1,lower(SUBSTRING(column_Name,1,1)))+'!=null">'+column_name+'= #{'+STUFF( column_name,1,1,lower(SUBSTRING(column_Name,1,1)))+'},</if>' FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME='aaaaa';
