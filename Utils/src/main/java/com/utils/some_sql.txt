@@ -8,3 +8,13 @@ SELECT '#{'+STUFF( column_name,1,1,lower(SUBSTRING(column_Name,1,1)))+'},' FROM 
 WHERE TABLE_NAME='aaaaa';
 SELECT  '<if test="'+STUFF( column_name,1,1,lower(SUBSTRING(column_Name,1,1)))+'!=null">'+column_name+'= #{'+STUFF( column_name,1,1,lower(SUBSTRING(column_Name,1,1)))+'},</if>' FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME='aaaaa';
+
+select data_type, 
+CASE WHEN data_type = 'int' THEN 'private Integer '
+    WHEN data_type = 'varchar' THEN 'private String '
+    WHEN data_type = 'datetime' THEN 'private Date '
+    WHEN data_type = 'nvarchar' THEN 'private String '
+    WHEN data_type = 'smallint' THEN 'private Integer'
+END AS javaType, LOWER(SUBSTRING(column_name,1,1)) + SUBSTRING(column_name,2,LEN(column_name)) + ';',
+column_name from information_schema.columns 
+where table_name = 'aaa' ;
