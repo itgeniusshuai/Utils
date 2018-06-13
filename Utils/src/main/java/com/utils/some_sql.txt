@@ -18,3 +18,16 @@ CASE WHEN data_type = 'int' THEN 'private Integer '
 END AS javaType, LOWER(SUBSTRING(column_name,1,1)) + SUBSTRING(column_name,2,LEN(column_name)) + ';',
 column_name from information_schema.columns 
 where table_name = 'aaa' ;
+
+
+select data_type, 
+CASE WHEN data_type = 'int' THEN concat('private Integer ',COLUMN_NAME,';')
+    WHEN data_type = 'varchar' THEN  concat('private String ',COLUMN_NAME,';')
+	WHEN data_type = 'char' THEN  concat('private String ',COLUMN_NAME,';')
+    WHEN data_type = 'datetime' THEN concat('private Date ',COLUMN_NAME,';')
+    WHEN data_type = 'nvarchar' THEN concat('private String ',COLUMN_NAME,';')
+    WHEN data_type = 'smallint' THEN concat('private Integer',COLUMN_NAME,';')
+	WHEN data_type = 'tinyint' THEN concat('private Integer',COLUMN_NAME,';')
+END AS javaType,
+column_name from information_schema.columns 
+where table_name = 'order_logistics' ;
